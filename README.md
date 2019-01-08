@@ -26,7 +26,7 @@ The middleware can be configured with the following parameters:
 
 - `allowAll`: Whether to accept `*` as range-specifier.
 - `maximum`: Maximum number of items allowed per page (`50` by default).
-- `unit`: Range unit to be used when no `Range` header is provided (`items` by default).
+- `unit`: Accepted range unit (`items` by default).
 
 You can change the defaults by doing:
 
@@ -78,13 +78,14 @@ You can also provide `*` at the end of the range in order to retrieve the all of
 
 ### Response
 
-The first example will generate a response with the following `Content-Range` header:
+The first example will generate a response with the following headers:
 
 ```javascript
+'Accepted-Ranges': 'items'
 'Content-Range: items 0-4/*'
 ```
 
-The `*` will be replaced with the total number of items provided in the `length` variable.
+The `*` in the `Content-Range` header will be replaced with the total number of items provided in the `length` variable.
 
 #### Codes
 
